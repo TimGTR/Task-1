@@ -1,5 +1,10 @@
 package jm.task.core.jdbc.util;
 
+import jm.task.core.jdbc.model.User;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -10,6 +15,7 @@ public class Util {
     private final static String DB_PASSWORD = "0000";
     private final static String DB_URL = "jdbc:postgresql://127.0.0.1:5432/taskDB";
     private static Connection connection;
+
     {
         try {
             Class.forName("org.postgresql.Driver");
@@ -18,6 +24,7 @@ public class Util {
             throw new RuntimeException(e);
         }
     }
+
     public Util() {
 
     }
@@ -25,6 +32,5 @@ public class Util {
     public Connection getConnection() {
         return connection;
     }
-
 
 }
