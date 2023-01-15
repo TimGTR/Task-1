@@ -22,7 +22,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void createUsersTable() {
 
         try(Statement statement = util.getConnection().createStatement()) {
-            String sql = "CREATE TABLE IF NOT EXISTS " + TABLENAME + "(id SERIAL, name VARCHAR(40), lastName VARCHAR(40), age SMALLINT)";
+            String sql = "CREATE TABLE IF NOT EXISTS " + TABLENAME + "(id SERIAL PRIMARY KEY, name VARCHAR(40), lastName VARCHAR(40), age SMALLINT)";
             statement.execute(sql);
         } catch (SQLException e) {
             System.out.println("Такая таблица уже существует");
