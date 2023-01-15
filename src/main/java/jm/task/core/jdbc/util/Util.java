@@ -9,14 +9,21 @@ public class Util {
     private final static String DB_USERNAME = "postgres";
     private final static String DB_PASSWORD = "0000";
     private final static String DB_URL = "jdbc:postgresql://127.0.0.1:5432/taskDB";
-
-
-    public static void connectionToBD() {
+    private static Connection connection;
+    {
         try {
-            Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-        } catch (SQLException e) {
+            Class.forName("org.postgresql.Driver");
+            connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
+    public Util() {
+
+    }
+
+    public Connection getConnection() {
+        return connection;
     }
 
 
