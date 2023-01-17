@@ -8,23 +8,24 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         // реализуйте алгоритм здесь
-        UserServiceImpl userDao = new UserServiceImpl();
-        userDao.createUsersTable();
-        userDao.saveUser("Alex", "Petrov", (byte) 26);
-        System.out.println("User с именем – Alex добавлен в базу данных" );
-        userDao.saveUser("Anton", "Ivanov", (byte) 35);
-        System.out.println("User с именем – Anton добавлен в базу данных" );
-        userDao.saveUser("Petya", "Petrov", (byte) 55);
-        System.out.println("User с именем – Petya добавлен в базу данных" );
-        userDao.saveUser("Vasya", "Sidorov", (byte) 6);
-        System.out.println("User с именем – Vasya добавлен в базу данных" );
+        UserServiceImpl userService = new UserServiceImpl();
 
-        List<User> users = userDao.getAllUsers();
+        userService.createUsersTable();
+
+        userService.saveUser("Alex", "Petrov", (byte) 26);
+        userService.saveUser("Anton", "Ivanov", (byte) 35);
+        userService.saveUser("Petya", "Petrov", (byte) 55);
+        userService.saveUser("Vasya", "Sidorov", (byte) 6);
+
+        userService.removeUserById(2);
+
+
+        List<User> users = userService.getAllUsers();
         for(User user : users) {
             System.out.println(user);
         }
-        userDao.cleanUsersTable();
-        userDao.dropUsersTable();
+       // userService.cleanUsersTable();
+//        userService.dropUsersTable();
 
     }
 }
